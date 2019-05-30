@@ -1,0 +1,3 @@
+$(function () {
+    $('#motorcommon').addClass("active");
+})
