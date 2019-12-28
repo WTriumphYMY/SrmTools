@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 显示网页的控制器
  */
-@Controller
+@Controller()
 public class IndexController {
 
 	@Autowired

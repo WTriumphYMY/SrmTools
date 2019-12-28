@@ -1,7 +1,5 @@
 var result;
-
 $(function(){
-
     $('#entirebals').addClass("active");
 
     $('#calBtn').bind('click',function(){
@@ -12,7 +10,7 @@ $(function(){
     $('#srmName').blur(function(){
         var srmName = $('#srmName').val();
         $.ajax({
-            url:"/module/bals/blur",
+            url:contextRoot+"module/bals/blur",
             type:"post",
             dataType:"json",
             data:"srmName="+srmName,
@@ -53,7 +51,7 @@ $(function(){
 function submitForm(){
     var form = new FormData($("#calForm")[0]);
     $.ajax({
-        url:"/module/bals",
+        url:contextRoot+"module/bals",
         type:"post",
         data:form,
         cache: false,

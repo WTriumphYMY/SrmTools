@@ -10,11 +10,11 @@ xmlns:th="http://www.thymeleaf.org">
     <title>SRM806工具集</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <!-- Font Awesom字体 -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
     <!-- Custom styles for this template -->
-    <link href="/css/shop-item.css" rel="stylesheet">
+    <link th:href="@{/css/shop-item.css}" rel="stylesheet">
 
 </head>
 
@@ -29,7 +29,7 @@ xmlns:th="http://www.thymeleaf.org">
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
             <div class="card mt-4">
-                <img class="card-img-top img-fluid" src="/image/srm.jpg" alt="你瞅啥">
+                <img class="card-img-top img-fluid" th:src="@{/image/srm.jpg}" alt="你瞅啥">
                 <div class="card-body">
                     <h3 class="card-title" th:text="${tool.toolName}">固体火箭发动机计算工具集</h3>
                     <h4 th:text="${tool.toolAuthor}">凯璇大帝</h4>
@@ -55,15 +55,16 @@ xmlns:th="http://www.thymeleaf.org">
 
 <!-- Bootstrap core JavaScript -->
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/custom.js"></script>
-<script src="/js/entirebals.js"></script>
-<script src="/js/highcharts/highcharts.js"></script>
-<script src="/js/highcharts/exporting.js"></script>
-<script src="/js/highcharts/series-label.js"></script>
-<script src="/js/highcharts/oldie.js"></script>
-<script src="/js/highcharts/boost.js"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+<script th:inline="javascript"> var contextRoot = [[@{/}]];</script>
+<script th:src="@{/js/entirebals.js}"></script>
+<script th:src="@{/js/highcharts/highcharts.js}"></script>
+<script th:src="@{/js/highcharts/exporting.js}"></script>
+<script th:src="@{/js/highcharts/series-label.js}"></script>
+<script th:src="@{/js/highcharts/oldie.js}"></script>
+<script th:src="@{/js/highcharts/boost.js}"></script>
 </body>
 
 </html>

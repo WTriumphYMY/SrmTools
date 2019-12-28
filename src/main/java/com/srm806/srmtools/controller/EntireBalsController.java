@@ -21,7 +21,7 @@ import java.util.*;
 /**
  * 全过程内弹道控制器
  */
-@RestController
+@RestController()
 public class EntireBalsController {
 
     @Autowired
