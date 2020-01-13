@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SRM806工具集</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesom字体 -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/shop-item.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-3" th:include="fragments/choose :: choose"></div>
+        <!-- /.col-lg-3 -->
+        <div class="col-lg-9">
+            <div th:replace="~{fragments/desc_card :: card}"></div>
+            <!-- /.card -->
+            <br/>
+
+            <button type="button" class="btn btn-success btn-block" onclick="calculate()">计算</button>
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}">...</div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:inline="javascript"> var contextRoot = [[@{/}]];</script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+<script th:src="@{/js/gasdynamic.js}"></script>
+</body>
+
+</html>

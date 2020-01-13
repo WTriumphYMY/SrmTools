@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SRM806工具集</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesom字体 -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/shop-item.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-3" th:include="fragments/choose :: choose"></div>
+        <!-- /.col-lg-3 -->
+        <div class="col-lg-9">
+            <div th:replace="~{fragments/desc_card :: card}"></div>
+            <!-- /.card -->
+            <br/>
+            <div class="row form-group">
+                <form class="form-inline" id="calForm">
+                <div class="col-8">
+                    <div class="row">
+                        <label class="col-5 col-form-label">燃气比热比</label>
+                        <div class="col-7">
+                            <input type="text" class="form-control" name="k" value="1.4">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-5 col-form-label" id="gasLabel">气流λ</label>
+                        <div class="col-7">
+                            <input type="text" class="form-control" name="lambdaOrMach" value="2">
+                        </div>
+                    </div>
+                    <div class="row form-group" id="xAngle">
+                        <label class="col-5 col-form-label">气流转折角(°)</label>
+                        <div class="col-7">
+                            <input type="text" class="form-control" name="angle" value="20">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">计算结果</span>
+                        </div>
+                        <input type="text" class="form-control" id="result" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">波后速度系数</span>
+                        </div>
+                        <input type="text" class="form-control" id="zSuduxishu" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">波后波前静压比</span>
+                        </div>
+                        <input type="text" class="form-control" id="zJingyabi" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">激波总压恢复系数</span>
+                        </div>
+                        <input type="text" class="form-control" id="zZongyaxishu" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">波后速度系数</span>
+                        </div>
+                        <input type="text" class="form-control" id="xSuduxishu" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">波后波前静压比</span>
+                        </div>
+                        <input type="text" class="form-control" id="xJingyabi" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">激波总压恢复系数</span>
+                        </div>
+                        <input type="text" class="form-control" id="xZongyaxishu" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">马赫角(°)</span>
+                        </div>
+                        <input type="text" class="form-control" id="xMach" readonly>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('tau')" value="tau" checked>
+                        <label class="form-check-label">
+                            τ(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('epsilon')" value="epsilon">
+                        <label class="form-check-label">
+                            ε(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('n')" value="n">
+                        <label class="form-check-label">
+                            n(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('q')" value="q">
+                        <label class="form-check-label">
+                            q(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('y')" value="y">
+                        <label class="form-check-label">
+                            y(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('f')" value="f">
+                        <label class="form-check-label">
+                            f(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('r')" value="r">
+                        <label class="form-check-label">
+                            r(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('m')" value="m">
+                        <label class="form-check-label">
+                            M(λ)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('lambda')" value="lambda">
+                        <label class="form-check-label">
+                            λ(M)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('zjb')" value="zjb">
+                        <label class="form-check-label">
+                            正激波参数计算
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" onclick="chooseFun('xjb')" value="xjb">
+                        <label class="form-check-label">
+                            斜激波计算参数
+                        </label>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+            <button type="button" class="btn btn-success btn-block" onclick="calculate()">计算</button>
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}">...</div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:inline="javascript"> var contextRoot = [[@{/}]];</script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+<script th:src="@{/js/gasdynamic.js}"></script>
+</body>
+
+</html>
